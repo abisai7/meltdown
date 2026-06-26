@@ -24,6 +24,7 @@ RUN pip install --no-cache-dir \
     "uvicorn[standard]" \
     python-multipart \
     python-magic \
+    slowapi \
     markitdown \
     && pip uninstall -y \
     pydub \
