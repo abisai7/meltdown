@@ -20,7 +20,7 @@ md = MarkItDown()
 ALLOWED_EXTENSIONS = {
     ".pdf", ".docx", ".pptx", ".xlsx",
     ".html", ".htm", ".txt", ".csv",
-    ".jpg", ".jpeg", ".png", ".mp3", ".wav",
+    ".jpg", ".jpeg", ".png",
     ".zip", ".epub"
 }
 
@@ -52,7 +52,8 @@ async def convert(file: UploadFile):
         result = md.convert(tmp_path)
         return result.text_content
     except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Conversion failed: {str(e)}")
+        raise HTTPException(
+            status_code=500, detail=f"Conversion failed: {str(e)}")
     finally:
         os.unlink(tmp_path)
 

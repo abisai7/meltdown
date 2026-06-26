@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import Markdown from "react-markdown";
 
-const ACCEPTED = ".pdf,.docx,.pptx,.xlsx,.html,.htm,.txt,.csv,.jpg,.jpeg,.png,.mp3,.wav,.zip,.epub";
+const ACCEPTED = ".pdf,.docx,.pptx,.xlsx,.html,.htm,.txt,.csv,.jpg,.jpeg,.png,.zip,.epub";
 
 export default function App() {
   const [file, setFile] = useState(null);
