@@ -6,7 +6,7 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
 from markitdown import MarkItDown
 
-app = FastAPI(title="MarkItDown Web App")
+app = FastAPI(title="Meltdown")
 
 app.add_middleware(
     CORSMiddleware,

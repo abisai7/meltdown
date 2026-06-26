@@ -74,7 +74,7 @@ export default function App() {
 
   return (
     <main>
-      <h1>MarkItDown</h1>
+      <h1>Meltdown</h1>
       <p>Convert documents to Markdown — no files stored.</p>
 
       <div
