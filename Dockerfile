@@ -23,6 +23,7 @@ RUN pip install --no-cache-dir \
     fastapi \
     "uvicorn[standard]" \
     python-multipart \
+    python-magic \
     markitdown \
     && pip uninstall -y \
     pydub \
