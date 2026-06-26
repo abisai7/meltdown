@@ -57,6 +57,36 @@ docker run -p 8000:8000 meltdown
 
 The `railway.toml` configures the build and start command.
 
+## Security
+
+All security features are env-var driven with safe defaults (open access for local dev).
+
+| Variable | Default | Description |
+|---|---|---|
+| `ALLOWED_ORIGINS` | `*` | Comma-separated CORS origins |
+| `API_KEY` | *(none)* | Require `X-API-Key` header — skipped if unset |
+| `RATE_LIMIT` | `10/minute` | Requests per IP |
+| `CONVERSION_TIMEOUT` | `30` | Max seconds per conversion |
+| `MAX_CONCURRENT` | `5` | Max simultaneous conversions |
+
+### Generating an API Key
+
+```bash
+python -c "import secrets; print(secrets.token_urlsafe(32))"
+```
+
+Set it in Railway (Variables tab) or in a local `.env` file:
+
+```
+API_KEY=your-generated-key
+```
+
+Clients must then send the header:
+
+```
+X-API-Key: your-generated-key
+```
+
 ## License
 
 MIT
