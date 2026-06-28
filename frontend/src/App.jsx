@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import Markdown from "react-markdown";
 
 const ACCEPTED = ".pdf,.docx,.pptx,.xlsx,.html,.htm,.txt,.csv,.jpg,.jpeg,.png,.zip,.epub";
+const API_KEY = import.meta.env.VITE_API_KEY || "";
 
 export default function App() {
   const [file, setFile] = useState(null);
@@ -42,8 +43,12 @@ export default function App() {
     formData.append("file", file);
 
     try {
+      const headers = {};
+      if (API_KEY) headers["X-API-Key"] = API_KEY;
+
       const res = await fetch("/api/convert", {
         method: "POST",
+        headers,
         body: formData,
       });
 

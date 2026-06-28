@@ -63,8 +63,9 @@ All security features are env-var driven with safe defaults (open access for loc
 
 | Variable | Default | Description |
 |---|---|---|
-| `ALLOWED_ORIGINS` | `*` | Comma-separated CORS origins |
-| `API_KEY` | *(none)* | Require `X-API-Key` header — skipped if unset |
+| `ALLOWED_ORIGINS` | `*` | Comma-separated CORS origins (backend) |
+| `API_KEY` | *(none)* | Require `X-API-Key` header — skipped if unset (backend) |
+| `VITE_API_KEY` | *(none)* | Must match `API_KEY` — bundled into frontend at build time |
 | `RATE_LIMIT` | `10/minute` | Requests per IP |
 | `CONVERSION_TIMEOUT` | `30` | Max seconds per conversion |
 | `MAX_CONCURRENT` | `5` | Max simultaneous conversions |
@@ -75,17 +76,14 @@ All security features are env-var driven with safe defaults (open access for loc
 python -c "import secrets; print(secrets.token_urlsafe(32))"
 ```
 
-Set it in Railway (Variables tab) or in a local `.env` file:
+Set it in Railway (Variables tab) or in a local `.env` file — **both vars must match**:
 
 ```
 API_KEY=your-generated-key
+VITE_API_KEY=your-generated-key
 ```
 
-Clients must then send the header:
-
-```
-X-API-Key: your-generated-key
-```
+The frontend reads `VITE_API_KEY` and sends it as the `X-API-Key` header.
 
 ## License
 
