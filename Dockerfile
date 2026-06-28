@@ -1,6 +1,8 @@
 # ── Stage 1: Build React frontend ──────────────────────────────
 FROM node:20-alpine AS frontend-build
 
+ARG VITE_API_KEY=
+
 WORKDIR /app/frontend
 COPY frontend/package.json frontend/package-lock.json* ./
 RUN npm ci 2>/dev/null || npm install

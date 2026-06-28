@@ -85,6 +85,8 @@ VITE_API_KEY=your-generated-key
 
 The frontend reads `VITE_API_KEY` and sends it as the `X-API-Key` header.
 
+> **Note:** `VITE_API_KEY` must be available at Docker build time (Vite embeds it into the JS bundle). Railway passes environment variables to the Docker build automatically. If the frontend still sends an empty key, trigger a **rebuild** (not just a redeploy) so the Dockerfile picks up the new variable.
+
 ## License
 
 MIT
