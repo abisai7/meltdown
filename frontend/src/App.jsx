@@ -79,8 +79,7 @@ export default function App() {
 
   return (
     <main>
-      <h1>Meltdown</h1>
-      <p>Convert documents to Markdown — no files stored.</p>
+      <p>Upload PDFs, Word files, PowerPoint, Excel sheets, images, and more. Convert them to clean Markdown in seconds — no files stored.</p>
 
       <div
         className={`dropzone ${dragging ? "dragging" : ""}`}
